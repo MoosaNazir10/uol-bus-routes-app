@@ -2,21 +2,30 @@ body {
     font-family: 'Segoe UI', sans-serif;
     background-color: #e8f5e9;
     margin: 0;
-    padding: 15px;
+    padding: 10px; /* Reduced padding for mobile */
     display: flex;
     justify-content: center;
     background-image: url('busbg.jpg'); 
     background-size: cover;
     background-position: center;
+    background-attachment: fixed; /* Keeps bg steady while scrolling */
+    min-height: 100vh;
 }
 
 .container {
     width: 100%;
     max-width: 800px;
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.95); /* Slight transparency to see bg */
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 77, 64, 0.1);
+    
+    /* Logo logic */
+    background-image: url('logoo.png');
+    background-repeat: no-repeat;
+    background-position: center 20px; /* Centered for mobile by default */
+    background-size: 150px auto;
+    padding-top: 120px; /* Space so text doesn't hit the logo */
 }
 
 header {
@@ -25,30 +34,34 @@ header {
     margin-bottom: 20px;
 }
 
-h1 { color: #1b5e20; margin-bottom: 5px; }
-p { color: #4caf50; margin-top: 0; }
+h1 { color: #1b5e20; margin-bottom: 5px; font-size: 1.5rem; }
+p { color: #4caf50; margin-top: 0; font-size: 0.9rem; }
 
 #searchBar {
     width: 100%;
     padding: 15px;
     margin-bottom: 20px;
     border: 2px solid #a5d6a7;
-    border-radius: 8px;
+    border-radius: 25px; /* Pill shape is easier to tap */
     font-size: 16px;
     box-sizing: border-box;
+    outline: none;
 }
+
+#searchBar:focus { border-color: #2e7d32; }
 
 .route-group {
     margin-bottom: 10px;
     border: 1px solid #c8e6c9;
     border-radius: 8px;
     overflow: hidden;
+    background: white;
 }
 
 .route-header {
     background-color: #2e7d32;
     color: white;
-    padding: 15px;
+    padding: 18px 15px; /* Larger tap area for thumbs */
     cursor: pointer;
     display: flex;
     justify-content: space-between;
@@ -56,8 +69,6 @@ p { color: #4caf50; margin-top: 0; }
     font-weight: bold;
     transition: background 0.3s;
 }
-
-.route-header:hover { background-color: #1b5e20; }
 
 .route-content {
     display: none;
@@ -71,12 +82,36 @@ p { color: #4caf50; margin-top: 0; }
     justify-content: space-between;
     padding: 12px 15px;
     border-bottom: 1px solid #f1f8e9;
+    font-size: 0.95rem;
 }
 
-.stop-row:last-child { border-bottom: none; }
 .stop-time { color: #2e7d32; font-weight: bold; }
 
-/* Desktop-specific hover effect */
+/* --- RESPONSIVE QUERIES --- */
+
+/* For Tablets and Desktops */
 @media (min-width: 600px) {
+    .container {
+        padding: 30px;
+        padding-top: 30px;
+        background-position: 20px 20px; /* Logo moves to top-left */
+        background-size: 200px 90px;
+    }
+    
+    header {
+        text-align: right; /* Moves text away from logo */
+    }
+
+    h1 { font-size: 2rem; }
+    
     .stop-row:hover { background-color: #f1f8e9; }
+}
+
+/* For small phones */
+@media (max-width: 400px) {
+    .stop-row {
+        flex-direction: column; /* Stack name and time vertically */
+        gap: 5px;
+    }
+    .stop-time { text-align: right; }
 }
