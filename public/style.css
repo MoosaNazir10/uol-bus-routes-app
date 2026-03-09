@@ -1,0 +1,82 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #e8f5e9;
+    margin: 0;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    background-image: url('busbg.jpg'); 
+    background-size: cover;
+    background-position: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 77, 64, 0.1);
+}
+
+header {
+    text-align: center;
+    border-bottom: 4px solid #2e7d32;
+    margin-bottom: 20px;
+}
+
+h1 { color: #1b5e20; margin-bottom: 5px; }
+p { color: #4caf50; margin-top: 0; }
+
+#searchBar {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 2px solid #a5d6a7;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.route-group {
+    margin-bottom: 10px;
+    border: 1px solid #c8e6c9;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.route-header {
+    background-color: #2e7d32;
+    color: white;
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.route-header:hover { background-color: #1b5e20; }
+
+.route-content {
+    display: none;
+    background-color: #fff;
+}
+
+.route-content.active { display: block; }
+
+.stop-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 15px;
+    border-bottom: 1px solid #f1f8e9;
+}
+
+.stop-row:last-child { border-bottom: none; }
+.stop-time { color: #2e7d32; font-weight: bold; }
+
+/* Desktop-specific hover effect */
+@media (min-width: 600px) {
+    .stop-row:hover { background-color: #f1f8e9; }
+}
